@@ -5,6 +5,7 @@ export default React.createClass({
         return (
             <div>
                 <h2>{this.props.params.repoName}</h2>
+                <button>dsa</button>
             </div>
         )
     }
