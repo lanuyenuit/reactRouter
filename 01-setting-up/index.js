@@ -1,15 +1,23 @@
 import React from 'react'
 import { render } from 'react-dom'
-import App from './modules/App'
 import { Router, Route, browserHistory } from 'react-router'
+
+import App from './modules/App'
 import About from './modules/About'
 import Repos from './modules/Repos'
+import Repo from './modules/Repo'
+import Something from './modules/Something'
 
 render((
     <Router history={browserHistory}>
         <Route path="/" component={App}/>
         {/* add the routes here */}
-        <Route path="/repos" component={Repos}/>
-        <Route path="/about" component={About}/>
+            <Route path="/repos" component={Repos}>
+                <Route path="/repos/:userName/:repoName" component={Repo}/>
+            </Route>
+        {/*<Route path="/about" component={About}/>*/}
+        <Route path="/about" component={About}>
+            <Route path="/about/:userName/:aboutName" component={Something}/>
+        </Route>
     </Router>
 ), document.getElementById('app'))
